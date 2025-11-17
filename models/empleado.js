@@ -6,7 +6,7 @@ class Empleado {
 
         const params = [
             iOpcion,
-            data.iNumEmpleado || 0,
+            (data.iNumEmpleado === undefined || data.iNumEmpleado === "" ? -1 : data.iNumEmpleado),
             data.sNombre || null,
             data.sApPaterno || null,
             data.sApMaterno || null,
@@ -16,7 +16,7 @@ class Empleado {
             data.sCurp || null,
             data.sNss || null,
             data.iPuesto || null,
-            data.sCausaBaja || null
+            data.sCausaBaja || ''
         ];
 
         const sql = `
@@ -25,6 +25,7 @@ class Empleado {
             )
         `;
 
+        console.log('parametros = ', sql, params);
         const result = await db.query(sql, params);
 
         return result.rows;

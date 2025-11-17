@@ -6,9 +6,11 @@ exports.ejecutar = async (req, res) => {
 
         const data = await puestoModel.ejecutar(iOpcion, params);
 
-        res.json({
-            resultado: data
-        });
+        console.log('puestos encontrados =', data);
+        console.log('numero de puestos = ', data.length);
+
+        res.json({ data });
+
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

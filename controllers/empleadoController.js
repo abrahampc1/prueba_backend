@@ -6,6 +6,9 @@ exports.ejecutar = async (req, res) => {
 
         const data = await empleadoModel.ejecutar(iOpcion, params);
 
+        console.log('empleado result = ', data);
+        console.log('numero de empleados = ', data.length);
+
         res.json({ data });
 
     } catch (err) {
